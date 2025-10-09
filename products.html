@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Shop - Products</title>
+  <link href="dist\styles.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-light border-bottom py-4 mb-4">
+    <div class="container">
+      <h1 class="h3 mb-0">All Products</h1>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row g-3 mb-4 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Search</label>
+        <input type="text" id="search" class="form-control" placeholder="Search products..." />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold">Category</label>
+        <select id="filter-category" class="form-select">
+          <option value="">All</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold">Sort By</label>
+        <select id="sort" class="form-select">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="alpha">Alphabetical</option>
+        </select>
+      </div>
+      <div class="col-md-2 d-grid">
+        <button id="reset" class="btn btn-outline-secondary mt-3 mt-md-0">Reset</button>
+      </div>
+    </div>
+
+    <div id="product-grid" class="row g-4"></div>
+    <div class="text-center mt-4 d-none" id="no-results">
+      <p class="text-muted">No products match your search.</p>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0 small">© 2025 E-Shop • <a href="about.html" class="text-white text-decoration-none">About</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>window.Eshop && window.Eshop.pages.products();</script>
+</body>
+</html>

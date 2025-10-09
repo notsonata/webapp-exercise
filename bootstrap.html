@@ -3,83 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Shop - Bootstrap</title>
+  <title>E-Shop - Bootstrap Home</title>
 
-  <!-- Bootstrap CSS (comment out to see plain HTML) -->
+  <!-- Compiled (Bootstrap + custom) CSS -->
   <link href="dist\styles.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="#">E-Shop</a>
-      <button class="navbar-toggler" type="button">
+      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">🛒 Cart</a></li>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="bootstrap.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="text-center text-white py-5 bg-dark" style="background:url('https://picsum.photos/1200/400?business') center/cover no-repeat;">
-    <div class="container">
-      <h1 class="display-4">Welcome to E-Shop</h1>
+  <header class="text-center text-white py-5 bg-dark position-relative overflow-hidden" style="background:url('https://picsum.photos/1200/400?business') center/cover no-repeat;">
+    <div class="container py-5">
+      <h1 class="display-4 fw-bold">Welcome to E-Shop</h1>
       <p class="lead">Discover premium products for your business and lifestyle</p>
+      <a href="products.html" class="btn btn-primary btn-lg mt-2">Shop Now</a>
     </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,.5);"></div>
   </header>
 
   <!-- PRODUCTS -->
   <section class="py-5">
     <div class="container">
       <h2 class="text-center mb-4">Featured Products</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="https://picsum.photos/300/200?product1" class="card-img-top" alt="Product 1">
-            <div class="card-body">
-              <h5 class="card-title">Elegant Chair</h5>
-              <p class="card-text">$99.00</p>
-              <a href="#" class="btn btn-primary w-100">Add to Cart</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="https://picsum.photos/300/200?product2" class="card-img-top" alt="Product 2">
-            <div class="card-body">
-              <h5 class="card-title">Smart Lamp</h5>
-              <p class="card-text">$49.00</p>
-              <a href="#" class="btn btn-primary w-100">Add to Cart</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="https://picsum.photos/300/200?product3" class="card-img-top" alt="Product 3">
-            <div class="card-body">
-              <h5 class="card-title">Modern Desk</h5>
-              <p class="card-text">$199.00</p>
-              <a href="#" class="btn btn-primary w-100">Add to Cart</a>
-            </div>
-          </div>
-        </div>
+      <div class="row g-4" id="featured-products">
+        <!-- Featured products injected via JS (see app.js) as a subset of catalog -->
+      </div>
+      <div class="text-center mt-4">
+        <a href="products.html" class="btn btn-outline-primary btn-lg">Browse Full Catalog →</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0">© 2025 E-Shop | Designed for demo purposes</p>
+    <p class="mb-0 small">© 2025 E-Shop | Demo site • <a href="about.html" class="text-decoration-none text-white">About</a> • <a href="contact.html" class="text-decoration-none text-white">Contact</a></p>
   </footer>
 
+  <!-- Shared App Logic -->
+  <script src="app.js"></script>
 </body>
 </html>

@@ -14,7 +14,8 @@
   "type": "commonjs",
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "bulma": "^1.0.4"
+    "bulma": "^1.0.4",
+    "jquery-validation": "^1.21.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

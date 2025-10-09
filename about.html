@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Shop - About</title>
+  <link href="dist\styles.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-light border-bottom py-5 mb-4">
+    <div class="container">
+      <h1 class="display-6 fw-semibold mb-2">About E-Shop</h1>
+      <p class="lead mb-0 text-muted">A demo storefront showcasing Bootstrap UI patterns.</p>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <h2 class="h4">Our Mission</h2>
+        <p>We built E-Shop as a lightweight demonstration of a modern e‑commerce front-end using only static HTML pages styled through a single compiled stylesheet. The goal is to highlight component layout, responsive behavior, and a sprinkle of progressive enhancement via a tiny JavaScript module.</p>
+        <h2 class="h4 mt-4">Tech Stack</h2>
+        <ul class="list-group mb-3">
+          <li class="list-group-item">Bootstrap utility-inspired classes (provided in dist/styles.css)</li>
+          <li class="list-group-item">Vanilla JavaScript for catalog, cart, and filtering logic</li>
+          <li class="list-group-item">Graceful degradation: content remains readable without JS</li>
+        </ul>
+        <h2 class="h4 mt-4">Features Demonstrated</h2>
+        <ul>
+          <li>Responsive navbar with collapse behavior</li>
+          <li>Dynamic product listing & filtering</li>
+          <li>Client-side cart persisted in localStorage</li>
+          <li>Reusable layout elements + shared stylesheet</li>
+        </ul>
+      </div>
+      <div class="col-lg-5">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">Quick Stats</h3>
+            <ul class="list-unstyled small mb-0">
+              <li><strong id="stat-products">0</strong> Products</li>
+              <li><strong id="stat-categories">0</strong> Categories</li>
+              <li><strong id="stat-cart-items">0</strong> Items in Cart</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h3 class="h6 text-uppercase text-muted">Design Notes</h3>
+          <p class="small">This project intentionally avoids a build framework for the HTML to keep the focus on layout. In a production app we'd hydrate components server-side or use a framework.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0 small">© 2025 E-Shop • <a href="contact.html" class="text-white text-decoration-none">Contact</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>window.Eshop && window.Eshop.pages.about();</script>
+</body>
+</html>
