@@ -172,6 +172,10 @@
 
   function contactForm(){
     const form = document.getElementById('contact-form'); if(!form) return;
+    // If jQuery Validation is present, let it manage submission/validation to avoid duplicate handlers
+    if (window.jQuery && window.jQuery.fn && window.jQuery.fn.validate) {
+      return;
+    }
     form.addEventListener('submit', e=>{
       e.preventDefault();
       // Form submission logic would go here

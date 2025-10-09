@@ -38,17 +38,17 @@
         <form id="contact-form" class="needs-validation" novalidate>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="name">Name</label>
-            <input required type="text" class="form-control" id="name" placeholder="Jane Doe" />
+            <input required type="text" class="form-control" id="name" name="name" placeholder="Jane Doe" />
             <div class="invalid-feedback">Please enter your name.</div>
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="email">Email</label>
-            <input required type="email" class="form-control" id="email" placeholder="you@example.com" />
+            <input required type="email" class="form-control" id="email" name="email" placeholder="you@example.com" />
             <div class="invalid-feedback">Enter a valid email.</div>
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="topic">Topic</label>
-            <select id="topic" class="form-select" required>
+            <select id="topic" name="topic" class="form-select" required>
               <option value="" selected disabled>Select a topic</option>
               <option>General Inquiry</option>
               <option>Order Support</option>
@@ -59,7 +59,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="message">Message</label>
-            <textarea required id="message" rows="5" class="form-control" placeholder="How can we help?"></textarea>
+            <textarea required id="message" name="message" rows="5" class="form-control" placeholder="How can we help?"></textarea>
             <div class="invalid-feedback">Message cannot be empty.</div>
           </div>
           <button class="btn btn-primary" type="submit">Send Message</button>
@@ -89,7 +89,44 @@
     <p class="mb-0 small">© 2025 E-Shop • <a href="about.html" class="text-white text-decoration-none">About</a></p>
   </footer>
 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
   <script src="app.js"></script>
-  <script>window.Eshop && window.Eshop.pages.contact();</script>
+  <script>
+    window.Eshop && window.Eshop.pages.contact();
+    (function() {
+      // Ensure jQuery and the validate plugin are available
+      if (!window.jQuery || !$.fn.validate) return;
+      $("#contact-form").validate({
+        errorPlacement: function(error, element) {
+          // Style all validation messages in red (Bootstrap danger)
+          error.attr('style', 'font-style: italic; color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; display: block;');
+          error.insertAfter(element);
+        },
+        rules: {
+          name: { required: true, minlength: 2 },
+          email: { required: true, email: true },
+          topic: { required: true },
+          message: { required: true, minlength: 5 }
+        },
+        messages: {
+          name: "Please enter your name (at least 2 characters).",
+          email: "Enter a valid email address.",
+          topic: "Please choose a topic.",
+          message: "Message cannot be empty."
+        },
+        submitHandler: function(form, event) {
+          event.preventDefault();
+          // Show success alert and reset the form
+          $("#contact-success").removeClass("d-none");
+          form.reset();
+          // Reset select back to placeholder
+          $(form).find("select").prop("selectedIndex", 0);
+          // Clear validation messages/state
+          $(form).validate().resetForm();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
