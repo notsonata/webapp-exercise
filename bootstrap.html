@@ -26,6 +26,7 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+          <li class="nav-item ms-lg-2"><button class="btn btn-sm btn-primary" id="login-btn" type="button">Log In</button></li>
           <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm btn-outline-secondary" type="button" aria-pressed="false">Dark</button></li>
         </ul>
       </div>
@@ -63,9 +64,13 @@
     <p class="mb-0 small small-muted">© 2025 Framework • <a href="about.html" class="text-decoration-none">About</a> • <a href="contact.html" class="text-decoration-none">Contact</a></p>
   </footer>
 
+  <!-- jQuery (for modal/validation helpers) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!-- Bootstrap JS (for navbar collapse/toggler) -->
   <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
   <!-- Shared App Logic -->
   <script src="app.js"></script>
+  <!-- Auth (login modal + signup link) -->
+  <script src="auth.js"></script>
 </body>
 </html>

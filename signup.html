@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Shop - Sign Up</title>
+  <script>(function(){try{var t=localStorage.getItem('eshop-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t==='dark'?'dark':'light');}catch(e){}})();</script>
+  <link href="dist/styles.css" rel="stylesheet" />
+  <link href="dist/theme.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="bootstrap.html">Framework</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="bootstrap.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+          <li class="nav-item ms-lg-2"><button class="btn btn-sm btn-primary" id="login-btn" type="button">Log In</button></li>
+          <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm btn-outline-secondary" type="button" aria-pressed="false">Dark</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header-plain py-5 mb-4">
+    <div class="container">
+      <h1 class="display-6 fw-semibold mb-2">Create your account</h1>
+      <p class="lead mb-0 text-muted">Join us to enjoy a faster checkout.</p>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form id="signup-form" class="surface-card" novalidate>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="su-name">Full Name</label>
+            <input id="su-name" name="name" type="text" class="form-control" required placeholder="Jane Doe" />
+            <div class="invalid-feedback">Name is required.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="su-email">Email</label>
+            <input id="su-email" name="email" type="email" class="form-control" required placeholder="you@example.com" />
+            <div class="invalid-feedback">Valid email required.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="su-password">Password</label>
+            <input id="su-password" name="password" type="password" class="form-control" required minlength="6" />
+            <div class="invalid-feedback">Password must be at least 6 characters.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="su-password2">Retype Password</label>
+            <input id="su-password2" name="password2" type="password" class="form-control" required minlength="6" />
+            <div class="invalid-feedback" id="pw2-error">This password does not match</div>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Create Account</button>
+          <div class="text-center mt-3 small">
+            Already have an account? <a href="bootstrap.html" id="back-to-login">Back to home</a>
+          </div>
+          <div id="signup-success" class="alert alert-success mt-3 d-none">Account created. You can now log in.</div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 mt-auto">
+    <p class="mb-0 small small-muted">© 2025 Framework</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    (function(){
+      const $form = $("#signup-form");
+
+      // Keypress restrictions
+      const allowedName = /^[a-zA-Z\s\-']$/; // letters, space, dash, apostrophe per key
+      const allowedEmail = /^[a-zA-Z0-9@._+\-]$/; // simplified safe set for typing
+
+      $("#su-name").on("keypress", function(e){
+        const ch = String.fromCharCode(e.which || e.keyCode);
+        if(!allowedName.test(ch)) e.preventDefault();
+      });
+      $("#su-email").on("keypress", function(e){
+        const ch = String.fromCharCode(e.which || e.keyCode);
+        if(!allowedEmail.test(ch)) e.preventDefault();
+      });
+
+      function validateMatch(){
+        const p1 = $("#su-password").val();
+        const p2 = $("#su-password2").val();
+        const match = p1 === p2 && p2.length > 0;
+        const $pw2 = $("#su-password2");
+        if(!match){
+          $pw2.addClass("is-invalid");
+          $("#pw2-error").text("This password does not match");
+        } else {
+          $pw2.removeClass("is-invalid");
+        }
+        return match;
+      }
+      $("#su-password, #su-password2").on("input", validateMatch);
+
+      if($.fn.validate){
+        $form.validate({
+          errorPlacement: function(error, element){
+            error.attr('style', 'font-style: italic; color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; display: block;');
+            error.insertAfter(element);
+          },
+          rules: {
+            name: { required: true, minlength: 2 },
+            email: { required: true, email: true },
+            password: { required: true, minlength: 6 },
+            password2: { required: true, minlength: 6, equalTo: "#su-password" }
+          },
+          messages: {
+            password2: { equalTo: "This password does not match" }
+          },
+          submitHandler: function(form, ev){
+            ev.preventDefault();
+            if(!validateMatch()) return;
+            const payload = {
+              name: form.name.value.trim(),
+              email: form.email.value.trim(),
+              password: form.password.value
+            };
+            // Post to local server to persist
+            fetch('/api/signup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+              .then(r=> r.ok ? r.json() : r.json().then(x=>Promise.reject(x)))
+              .then(()=>{ $("#signup-success").removeClass("d-none"); form.reset(); })
+              .catch(err=>{ alert(err && err.message ? err.message : 'Failed to save. Start the server first.'); });
+          }
+        });
+      } else {
+        $form.on('submit', function(e){
+          e.preventDefault();
+          if(!this.checkValidity() || !validateMatch()){ this.classList.add('was-validated'); return; }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
