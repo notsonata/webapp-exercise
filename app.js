@@ -1,6 +1,7 @@
 /* E-Shop Demo JS (no external dependencies) */
 (function(){
   const STORAGE_KEY = 'eshop-cart-v1';
+  const THEME_STORAGE_KEY = 'eshop-theme';
   const CATALOG = [
     { id: 'chair-1', name: 'Elegant Chair', price: 99, category: 'Furniture', featured: true, img: 'https://picsum.photos/300/200?chair' },
     { id: 'lamp-1', name: 'Smart Lamp', price: 49, category: 'Lighting', featured: true, img: 'https://picsum.photos/300/200?lamp' },
@@ -196,6 +197,25 @@
 
   // Auto-detect page by body data attribute in future (simpler: look for known anchor)
   document.addEventListener('DOMContentLoaded', ()=>{
+    // Theme toggle wiring
+    const btn = document.getElementById('theme-toggle');
+    function applyTheme(theme){
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-bs-theme', theme==='dark' ? 'dark' : 'light');
+      try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
+      if(btn){ btn.textContent = theme==='dark' ? 'Light' : 'Dark'; btn.setAttribute('aria-pressed', theme==='dark'); }
+    }
+    if(btn){
+      // Initialize label
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      btn.textContent = current==='dark' ? 'Light' : 'Dark';
+      btn.setAttribute('aria-pressed', current==='dark');
+      btn.addEventListener('click', ()=>{
+        const t = (document.documentElement.getAttribute('data-theme')==='dark') ? 'light' : 'dark';
+        applyTheme(t);
+      });
+    }
+
     // If featured products container exists treat as home
     if(document.getElementById('featured-products')) window.Eshop.pages.home();
   });

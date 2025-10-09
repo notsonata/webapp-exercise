@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Shop - About</title>
+  <script>(function(){try{var t=localStorage.getItem('eshop-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t==='dark'?'dark':'light');}catch(e){}})();</script>
   <link href="dist\styles.css" rel="stylesheet" />
+  <link href="dist\theme.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
+      <a class="navbar-brand fw-bold" href="bootstrap.html">Framework</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,21 +22,23 @@
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+          <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm btn-outline-secondary" type="button" aria-pressed="false">Dark</button></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="bg-light border-bottom py-5 mb-4">
+  <header class="header-plain py-5 mb-4">
     <div class="container">
       <h1 class="display-6 fw-semibold mb-2">About E-Shop</h1>
-      <p class="lead mb-0 text-muted">A demo storefront showcasing Bootstrap UI patterns.</p>
+      <p class="lead mb-0 text-muted">A demo storefront showcasing UI patterns with a clean, card-first theme.</p>
     </div>
   </header>
 
   <main class="container pb-5">
     <div class="row g-5">
       <div class="col-lg-7">
+        <div class="surface-card">
         <h2 class="h4">Our Mission</h2>
         <p>We built E-Shop as a lightweight demonstration of a modern e‑commerce front-end using only static HTML pages styled through a single compiled stylesheet. The goal is to highlight component layout, responsive behavior, and a sprinkle of progressive enhancement via a tiny JavaScript module.</p>
         <h2 class="h4 mt-4">Tech Stack</h2>
@@ -50,6 +54,7 @@
           <li>Client-side cart persisted in localStorage</li>
           <li>Reusable layout elements + shared stylesheet</li>
         </ul>
+        </div>
       </div>
       <div class="col-lg-5">
         <div class="card shadow-sm">
@@ -70,10 +75,11 @@
     </div>
   </main>
 
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <p class="mb-0 small">© 2025 E-Shop • <a href="contact.html" class="text-white text-decoration-none">Contact</a></p>
+  <footer class="text-center py-3 mt-auto">
+    <p class="mb-0 small small-muted">© 2025 Framework • <a href="contact.html" class="text-decoration-none">Contact</a></p>
   </footer>
 
+  <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
   <script src="app.js"></script>
   <script>window.Eshop && window.Eshop.pages.about();</script>
 </body>
