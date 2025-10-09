@@ -20,6 +20,7 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
+          <li class="nav-item"><button id="nav-login-btn" class="btn btn-outline-light btn-sm ms-3" type="button">Login</button></li>
         </ul>
       </div>
     </div>
@@ -68,6 +69,48 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="login.js"></script>
+
+  <!-- LOGIN MODAL (Bootstrap markup so dist/styles.css applies) -->
+  <div id="login-modal" class="modal d-none" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="login-title">Login</h5>
+          <button type="button" class="btn-close btn-close-white" id="login-close" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form" novalidate>
+            <div class="mb-3">
+              <label for="login-email" class="form-label">Email</label>
+              <input id="login-email" name="email" type="email" class="form-control" required placeholder="you@example.com" 
+                     pattern="[^\s].*" 
+                     oninput="this.value = this.value.replace(/^\s+/, '')" 
+                     onkeydown="if(event.key === ' ' && this.value.length === 0) return false;"
+                     autocomplete="email" spellcheck="false">
+              <div class="invalid-feedback">Please enter a valid email address without spaces before @.</div>
+            </div>
+            <div class="mb-3">
+              <label for="login-password" class="form-label">Password</label>
+              <input id="login-password" name="password" type="password" class="form-control" required placeholder="Password">
+              <div class="invalid-feedback">Password must be at least 3 characters and not just spaces.</div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="button" id="login-cancel" class="btn btn-link">Cancel</button>
+            </div>
+            <div id="login-feedback" class="mt-3" style="display:none;"></div>
+          </form>
+          <hr class="my-3">
+          <div class="text-center">
+            <p class="mb-2"><a href="#" id="forgot-password-link" class="text-decoration-none">Forgot Password?</a></p>
+            <p class="mb-0 text-muted small">No account yet? <a href="#" id="create-account-link" class="text-decoration-none">Create one here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script>window.Eshop && window.Eshop.pages.products();</script>
 </body>
 </html>
