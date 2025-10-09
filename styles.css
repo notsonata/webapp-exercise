@@ -1,13 +1,1 @@
 @import "bootstrap\dist\css\bootstrap.min.css";
-/* Theming layer is loaded per-page via dist/theme.css */
-
-/* Auth modal overlay */
-.auth-overlay { position: fixed; inset: 0; z-index: 1080; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-.auth-overlay.d-none { display: none !important; }
-.auth-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.35); backdrop-filter: blur(6px) saturate(1.1); }
-.auth-modal { position: relative; z-index: 1; width: 100%; max-width: 420px; border-radius: .75rem; box-shadow: 0 1rem 3rem rgba(0,0,0,.2); }
-.auth-modal .card-header { border-bottom: 0; }
-.auth-modal .btn-close { position: absolute; top: .75rem; right: .75rem; }
-
-/* Helper to prevent background scroll when modal is open */
-body.auth-modal-open { overflow: hidden; }

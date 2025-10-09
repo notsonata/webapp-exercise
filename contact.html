@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Shop - Contact</title>
-  <script>(function(){try{var t=localStorage.getItem('eshop-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t==='dark'?'dark':'light');}catch(e){}})();</script>
   <link href="dist\styles.css" rel="stylesheet" />
-  <link href="dist\theme.css" rel="stylesheet" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="bootstrap.html">Framework</a>
+      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,14 +20,12 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
           <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
-          <li class="nav-item ms-lg-2"><button class="btn btn-sm btn-primary" id="login-btn" type="button">Log In</button></li>
-          <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm btn-outline-secondary" type="button" aria-pressed="false">Dark</button></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="header-plain py-5 mb-4">
+  <header class="bg-light border-bottom py-5 mb-4">
     <div class="container">
       <h1 class="display-6 fw-semibold mb-2">Contact Us</h1>
       <p class="lead mb-0 text-muted">We'd love to hear from you.</p>
@@ -39,7 +35,7 @@
   <main class="container pb-5">
     <div class="row g-5">
       <div class="col-lg-7">
-        <form id="contact-form" class="needs-validation surface-card" novalidate>
+        <form id="contact-form" class="needs-validation" novalidate>
           <div class="mb-3">
             <label class="form-label fw-semibold" for="name">Name</label>
             <input required type="text" class="form-control" id="name" name="name" placeholder="Jane Doe" />
@@ -71,7 +67,7 @@
         </form>
       </div>
       <div class="col-lg-5">
-        <div class="card shadow-sm mb-4 surface-card">
+        <div class="card shadow-sm mb-4">
           <div class="card-body">
             <h2 class="h5">Support</h2>
             <p class="small mb-2">We respond to most inquiries within one business day.</p>
@@ -89,25 +85,13 @@
     </div>
   </main>
 
-  <footer class="text-center py-3 mt-auto">
-    <p class="mb-0 small small-muted">© 2025 Framework • <a href="about.html" class="text-decoration-none">About</a></p>
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0 small">© 2025 E-Shop • <a href="about.html" class="text-white text-decoration-none">About</a></p>
   </footer>
-
-  <!-- Success Toast -->
-  <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
-    <div id="contact-toast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="2200">
-      <div class="d-flex">
-        <div class="toast-body">Your message was sent successfully!</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
-  <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
   <script src="app.js"></script>
-  <script src="auth.js"></script>
   <script>
     window.Eshop && window.Eshop.pages.contact();
     (function() {
@@ -123,12 +107,7 @@
           name: { required: true, minlength: 2 },
           email: { required: true, email: true },
           topic: { required: true },
-          message: {
-            required: true,
-            minlength: 5,
-            // Treat whitespace-only as empty and validate length after trim
-            normalizer: function(value) { return $.trim(value); }
-          }
+          message: { required: true, minlength: 5 }
         },
         messages: {
           name: "Please enter your name (at least 2 characters).",
@@ -138,21 +117,13 @@
         },
         submitHandler: function(form, event) {
           event.preventDefault();
-          // Show success toast and reset the form
-          try {
-            var toastEl = document.getElementById('contact-toast');
-            if (toastEl && window.bootstrap && window.bootstrap.Toast) {
-              var toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-              toast.show();
-            }
-          } catch (e) { /* no-op */ }
+          // Show success alert and reset the form
+          $("#contact-success").removeClass("d-none");
           form.reset();
           // Reset select back to placeholder
           $(form).find("select").prop("selectedIndex", 0);
           // Clear validation messages/state
           $(form).validate().resetForm();
-          // Remove any Bootstrap invalid styles
-          $(form).find('.is-invalid').removeClass('is-invalid');
         }
       });
     })();

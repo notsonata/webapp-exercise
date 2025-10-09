@@ -6,16 +6,14 @@
   <title>E-Shop - Bootstrap Home</title>
 
   <!-- Compiled (Bootstrap + custom) CSS -->
-  <script>(function(){try{var t=localStorage.getItem('eshop-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t==='dark'?'dark':'light');}catch(e){}})();</script>
   <link href="dist\styles.css" rel="stylesheet">
-  <link href="dist\theme.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-  <a class="navbar-brand fw-bold" href="bootstrap.html">Framework</a>
+      <a class="navbar-brand fw-bold" href="bootstrap.html">E-Shop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,51 +24,40 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item position-relative"><a class="nav-link" href="cart.html">🛒 Cart <span class="badge bg-primary ms-1" id="cart-count">0</span></a></li>
-          <li class="nav-item ms-lg-2"><button class="btn btn-sm btn-primary" id="login-btn" type="button">Log In</button></li>
-          <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm btn-outline-secondary" type="button" aria-pressed="false">Dark</button></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="py-5 header-plain">
-    <div class="container">
-      <div class="surface-card mx-auto text-center" style="max-width: 720px;">
-        <h1 class="display-5 fw-bold mb-2">Framework</h1>
-        <p class="lead small-muted">Discover premium products for your work and lifestyle</p>
-        <a href="products.html" class="btn btn-primary btn-lg mt-2">Shop Now</a>
-      </div>
+  <header class="text-center text-white py-5 bg-dark position-relative overflow-hidden" style="background:url('https://picsum.photos/1200/400?business') center/cover no-repeat;">
+    <div class="container py-5">
+      <h1 class="display-4 fw-bold">Welcome to E-Shop</h1>
+      <p class="lead">Discover premium products for your business and lifestyle</p>
+      <a href="products.html" class="btn btn-primary btn-lg mt-2">Shop Now</a>
     </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,.5);"></div>
   </header>
 
   <!-- PRODUCTS -->
   <section class="py-5">
     <div class="container">
-      <div class="surface-card mx-auto" style="max-width: 1140px;">
-        <h2 class="text-center mb-4">Featured Products</h2>
-        <div class="row g-4" id="featured-products">
+      <h2 class="text-center mb-4">Featured Products</h2>
+      <div class="row g-4" id="featured-products">
         <!-- Featured products injected via JS (see app.js) as a subset of catalog -->
-        </div>
-        <div class="text-center mt-4">
-          <a href="products.html" class="btn btn-outline-secondary btn-lg">Browse Full Catalog →</a>
-        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="products.html" class="btn btn-outline-primary btn-lg">Browse Full Catalog →</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-3">
-    <p class="mb-0 small small-muted">© 2025 Framework • <a href="about.html" class="text-decoration-none">About</a> • <a href="contact.html" class="text-decoration-none">Contact</a></p>
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0 small">© 2025 E-Shop | Demo site • <a href="about.html" class="text-decoration-none text-white">About</a> • <a href="contact.html" class="text-decoration-none text-white">Contact</a></p>
   </footer>
 
-  <!-- jQuery (for modal/validation helpers) -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Bootstrap JS (for navbar collapse/toggler) -->
-  <script src="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js"></script>
   <!-- Shared App Logic -->
   <script src="app.js"></script>
-  <!-- Auth (login modal + signup link) -->
-  <script src="auth.js"></script>
 </body>
 </html>
